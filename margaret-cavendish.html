@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Margaret Cavendish — Filosofía · IES Alquipir</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #FAF9F5;
+            --bg-secondary: #F0EDE6;
+            --bg-card: #FFFFFF;
+            --text-primary: #2D2B28;
+            --text-secondary: #6B6560;
+            --text-tertiary: #9B9590;
+            --accent: #D97757;
+            --accent-hover: #C4603F;
+            --accent-light: rgba(217, 119, 87, 0.08);
+            --accent-light-hover: rgba(217, 119, 87, 0.14);
+            --border: rgba(0, 0, 0, 0.06);
+            --border-hover: rgba(0, 0, 0, 0.12);
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+            --shadow-md: 0 2px 8px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+            --shadow-lg: 0 4px 16px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+            --radius: 12px;
+            --radius-sm: 8px;
+            --highlight: #FFF8E1;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* ── Header ── */
+        .header {
+            background: var(--bg-primary);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .header-inner {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .logo-text {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 22px;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 8px;
+        }
+
+        .header-nav a {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 6px 12px;
+            border-radius: var(--radius-sm);
+            transition: all 0.2s ease;
+        }
+
+        .header-nav a:hover {
+            background: var(--accent-light);
+            color: var(--accent);
+        }
+
+        /* ── Hero ── */
+        .hero {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 56px 24px 40px;
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+        }
+
+        .hero-portrait {
+            flex-shrink: 0;
+            width: 200px;
+            height: 260px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-lg);
+            position: relative;
+        }
+
+        .hero-portrait img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: sepia(10%) saturate(90%);
+        }
+
+        .hero-portrait::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.08));
+        }
+
+        .hero-text {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--accent);
+            background: var(--accent-light);
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        .hero-text h1 {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 42px;
+            font-weight: 400;
+            color: var(--text-primary);
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 6px;
+        }
+
+        .hero-dates {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 19px;
+            font-weight: 500;
+            color: var(--text-tertiary);
+            margin-bottom: 16px;
+        }
+
+        .hero-subtitle {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-style: italic;
+            font-size: 23px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .hero-intro {
+            font-size: 19px;
+            color: var(--text-secondary);
+            line-height: 1.75;
+        }
+
+        /* ── Table of contents ── */
+        .toc {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 24px 40px;
+        }
+
+        .toc-inner {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px 28px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .toc-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            width: 100%;
+            margin-bottom: 4px;
+        }
+
+        .toc-link {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            transition: all 0.2s ease;
+        }
+
+        .toc-link:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: var(--accent-light);
+        }
+
+        /* ── Content sections ── */
+        .content {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 24px 60px;
+        }
+
+        .section {
+            margin-bottom: 48px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-icon {
+            font-size: 23px;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--accent-light);
+            border-radius: var(--radius-sm);
+        }
+
+        .section-title {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 28px;
+            font-weight: 400;
+            color: var(--text-primary);
+            letter-spacing: -0.01em;
+        }
+
+        /* ── Prose blocks ── */
+        .prose {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 28px 32px;
+        }
+
+        .prose p {
+            font-size: 19px;
+            color: var(--text-secondary);
+            line-height: 1.85;
+            margin-bottom: 16px;
+        }
+
+        .prose p:last-child {
+            margin-bottom: 0;
+        }
+
+        .prose strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .prose em {
+            font-style: italic;
+            color: var(--text-primary);
+        }
+
+        .prose .highlight {
+            background: var(--highlight);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        /* ── Quote ── */
+        .quote-block {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--accent);
+            border-radius: 0 var(--radius) var(--radius) 0;
+            padding: 28px 32px;
+            margin-bottom: 16px;
+        }
+
+        .quote-text {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-style: italic;
+            font-size: 20px;
+            color: var(--text-primary);
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+        .quote-author {
+            font-size: 15px;
+            color: var(--text-tertiary);
+            font-weight: 500;
+        }
+
+        /* ── Concept cards ── */
+        .concepts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 12px;
+        }
+
+        .concept-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px;
+            transition: all 0.2s ease;
+        }
+
+        .concept-card:hover {
+            border-color: var(--border-hover);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .concept-card h4 {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 19px;
+            font-weight: 400;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .concept-card p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* ── Works list ── */
+        .works-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .work-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 20px 24px;
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            transition: all 0.2s ease;
+        }
+
+        .work-item:hover {
+            border-color: var(--border-hover);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .work-year {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--accent);
+            background: var(--accent-light);
+            padding: 4px 10px;
+            border-radius: 6px;
+            flex-shrink: 0;
+            min-width: 52px;
+            text-align: center;
+        }
+
+        .work-info h4 {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 18px;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .work-info p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* ── Timeline ── */
+        .timeline {
+            position: relative;
+            padding-left: 28px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 6px;
+            top: 4px;
+            bottom: 4px;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent), var(--bg-secondary));
+            border-radius: 1px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 24px;
+            padding-left: 20px;
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -24px;
+            top: 7px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: 2px solid var(--bg-primary);
+        }
+
+        .timeline-year {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 2px;
+        }
+
+        .timeline-event {
+            font-size: 18px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .timeline-event strong {
+            color: var(--text-primary);
+        }
+
+        /* ── Context box ── */
+        .context-box {
+            background: var(--bg-secondary);
+            border-radius: var(--radius);
+            padding: 28px 32px;
+            border: 1px solid var(--border);
+        }
+
+        .context-box h4 {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 20px;
+            font-weight: 400;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+        }
+
+        .context-box p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 12px;
+        }
+
+        .context-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ── Glossary ── */
+        .glossary {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 12px;
+        }
+
+        .glossary-term {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 20px 24px;
+        }
+
+        .glossary-term dt {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 18px;
+            color: var(--accent);
+            margin-bottom: 6px;
+        }
+
+        .glossary-term dd {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* ── Footer ── */
+        .footer {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 24px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .footer p {
+            font-size: 15px;
+            color: var(--text-tertiary);
+        }
+
+        .footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 700px) {
+            .hero { flex-direction: column; padding: 36px 16px 28px; }
+            .hero-portrait { width: 140px; height: 180px; }
+            .hero-text h1 { font-size: 32px; }
+            .hero-subtitle { font-size: 19px; }
+            .content { padding: 0 16px 48px; }
+            .prose { padding: 20px 22px; }
+            .concepts-grid { grid-template-columns: 1fr; }
+            .glossary { grid-template-columns: 1fr; }
+            .header-nav { display: none; }
+            .toc-inner { padding: 20px 22px; }
+        }
+
+        /* ── Animations ── */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section {
+            animation: fadeUp 0.5s ease both;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.05s; }
+        .section:nth-child(2) { animation-delay: 0.08s; }
+        .section:nth-child(3) { animation-delay: 0.11s; }
+        .section:nth-child(4) { animation-delay: 0.14s; }
+        .section:nth-child(5) { animation-delay: 0.17s; }
+        .section:nth-child(6) { animation-delay: 0.20s; }
+        .section:nth-child(7) { animation-delay: 0.23s; }
+        .section:nth-child(8) { animation-delay: 0.26s; }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-inner">
+            <div class="logo-area">
+                <div class="logo-icon">φ</div>
+                <span class="logo-text">Filosofía</span>
+            </div>
+            <nav class="header-nav">
+                <a href="#vida">Vida</a>
+                <a href="#pensamiento">Pensamiento</a>
+                <a href="#obras">Obras</a>
+                <a href="#contexto">Contexto</a>
+                <a href="#glosario">Glosario</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-portrait">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Margaretcavendish.jpg" alt="Retrato de Margaret Cavendish, duquesa de Newcastle-upon-Tyne">
+        </div>
+        <div class="hero-text">
+            <div class="hero-tag">🪶 Filosofía Moderna · Siglo XVII</div>
+            <h1>Margaret Cavendish</h1>
+            <div class="hero-dates">1623 – 1673 · Duquesa de Newcastle-upon-Tyne</div>
+            <p class="hero-subtitle">«No vivo con esplendor, pero aspiro a escribir para que mi nombre viva cuando mi cuerpo haya muerto.»</p>
+            <p class="hero-intro">Filósofa natural, escritora, dramaturga y poeta inglesa. Fue una de las primeras mujeres en Europa en publicar obras de filosofía bajo su propio nombre y en asistir a una sesión de la Royal Society de Londres. Su pensamiento abarca la filosofía de la naturaleza, la epistemología, la filosofía de la mente y una temprana reflexión sobre la igualdad intelectual entre hombres y mujeres.</p>
+        </div>
+    </section>
+
+    <!-- Table of Contents -->
+    <div class="toc">
+        <div class="toc-inner">
+            <div class="toc-label">Contenidos</div>
+            <a class="toc-link" href="#vida">Biografía</a>
+            <a class="toc-link" href="#pensamiento">Pensamiento filosófico</a>
+            <a class="toc-link" href="#conceptos">Conceptos clave</a>
+            <a class="toc-link" href="#obras">Obras principales</a>
+            <a class="toc-link" href="#contexto">Contexto histórico</a>
+            <a class="toc-link" href="#recepcion">Recepción y legado</a>
+            <a class="toc-link" href="#glosario">Glosario</a>
+            <a class="toc-link" href="#relaciones">Relación con otros autores</a>
+        </div>
+    </div>
+
+    <!-- Content -->
+    <main class="content">
+
+        <!-- ═══════ BIOGRAFÍA ═══════ -->
+        <div class="section" id="vida">
+            <div class="section-header">
+                <div class="section-icon">📖</div>
+                <h2 class="section-title">Biografía</h2>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">1623</div>
+                    <p class="timeline-event">Nace como <strong>Margaret Lucas</strong> en Colchester, Essex (Inglaterra), en el seno de una familia acomodada de la nobleza menor. Es la menor de ocho hermanos. Recibe una educación doméstica informal, sin acceso a la formación académica reservada a los varones.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1643</div>
+                    <p class="timeline-event">En plena Guerra Civil inglesa, entra al servicio de la <strong>reina Enriqueta María</strong> como dama de compañía. Acompaña a la corte en su exilio en París, donde entrará en contacto con los círculos intelectuales europeos.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1645</div>
+                    <p class="timeline-event">Contrae matrimonio con <strong>William Cavendish</strong>, marqués (y más tarde duque) de Newcastle, treinta años mayor que ella. William es un aristócrata culto, mecenas de las artes y aficionado a la filosofía natural, que la anima a escribir y publicar.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1653</div>
+                    <p class="timeline-event">Publica sus primeras obras: <em>Poems and Fancies</em> y <em>Philosophical Fancies</em>. Se convierte en una de las primeras mujeres inglesas en publicar bajo su propio nombre. La recepción es mixta: admiración por su audacia, pero también burlas y descalificaciones por su condición de mujer.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1655</div>
+                    <p class="timeline-event">Publica <em>The World's Olio</em> y <em>Philosophical and Physical Opinions</em>, donde desarrolla su teoría materialista de la naturaleza, rechazando el atomismo mecanicista y proponiendo una materia dotada de vida y percepción.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1660</div>
+                    <p class="timeline-event">Con la <strong>Restauración de Carlos II</strong>, los Cavendish regresan a Inglaterra. Margaret continúa escribiendo prolíficamente: filosofía, teatro, biografía, poesía y ficción.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1666</div>
+                    <p class="timeline-event">Publica sus dos obras más importantes: <em>Observations upon Experimental Philosophy</em>, una crítica contundente de la nueva ciencia experimental, y <em>The Blazing World</em>, una narración utópica de ciencia ficción considerada una de las primeras del género.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1667</div>
+                    <p class="timeline-event">Asiste a una sesión de la <strong>Royal Society</strong> de Londres: es la primera mujer en hacerlo. El evento causa sensación y controversia. No volverá a ser invitada, y no habrá otra mujer en la Royal Society hasta 1945.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1668</div>
+                    <p class="timeline-event">Publica <em>Grounds of Natural Philosophy</em>, una revisión madura de su sistema filosófico. Continúa escribiendo hasta el final de su vida.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1673</div>
+                    <p class="timeline-event">Muere el <strong>15 de diciembre</strong> en Welbeck Abbey, Nottinghamshire, a los 50 años. Es enterrada en la Abadía de Westminster, un honor inusual para la época. Dejó tras de sí más de una docena de obras publicadas.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════ PENSAMIENTO ═══════ -->
+        <div class="section" id="pensamiento">
+            <div class="section-header">
+                <div class="section-icon">💭</div>
+                <h2 class="section-title">Pensamiento filosófico</h2>
+            </div>
+
+            <div class="prose" style="margin-bottom: 16px;">
+                <p>El pensamiento de Margaret Cavendish se sitúa en el corazón de los debates del siglo XVII sobre la naturaleza de la materia, el conocimiento y la mente, pero adopta posiciones marcadamente originales que la distinguen tanto del mecanicismo cartesiano como del empirismo baconiano.</p>
+                <p>Su filosofía evoluciona desde un <strong>atomismo inicial</strong> (presente en <em>Poems and Fancies</em>, 1653) hacia un <strong>materialismo vitalista</strong> plenamente desarrollado. En su sistema maduro, toda la materia está dotada de <span class="highlight">automoción, percepción y conocimiento</span>, lo que la convierte en una pensadora radicalmente opuesta a la visión mecanicista del universo como una máquina inerte movida por fuerzas externas.</p>
+                <p>Para Cavendish, <strong>no existe nada inmaterial en la naturaleza</strong>: todo lo que existe es materia, incluida lo que llamamos «alma» o «mente». Sin embargo, esta materia no es pasiva ni homogénea, sino que se compone de diferentes grados de materia —racional, sensitiva e inanimada— que están íntimamente mezclados en cada parte de la naturaleza.</p>
+            </div>
+
+            <div class="quote-block">
+                <p class="quote-text">«La naturaleza no es una máquina muerta ni un autómata; cada parte de ella posee conocimiento y percepción, y la variedad infinita de sus movimientos es fruto de su propia sabiduría interna.»</p>
+                <span class="quote-author">— Margaret Cavendish, paráfrasis de <em>Observations upon Experimental Philosophy</em> (1666)</span>
+            </div>
+
+            <div class="prose">
+                <p><strong>Crítica al mecanicismo:</strong> Cavendish rechaza la idea cartesiana de que la materia es meramente extensión pasiva movida por impacto. Si la materia fuera inerte, argumenta, ¿de dónde vendría el movimiento? No puede venir de fuera de la naturaleza (pues eso sería invocar lo sobrenatural), ni puede transmitirse por mero contacto entre partículas muertas. La única explicación coherente es que la materia posee un principio interno de movimiento: es <strong>autoactiva</strong>.</p>
+                <p><strong>Crítica al experimentalismo:</strong> En <em>Observations upon Experimental Philosophy</em>, Cavendish cuestiona que el uso de instrumentos como el microscopio y el telescopio ofrezca un conocimiento más fiable de la naturaleza. Los instrumentos, argumenta, no nos muestran la realidad tal cual es, sino imágenes deformadas que pueden engañarnos más que nuestros propios sentidos. La verdadera filosofía debe basarse en la <strong>razón</strong>, no en los artilugios.</p>
+                <p><strong>Filosofía de la mente:</strong> Al ser todo materia en su sistema, Cavendish ofrece una solución original al problema mente-cuerpo. No hay un dualismo de sustancias como en Descartes: la mente es <strong>materia racional</strong>, un tipo especial de materia autodirectiva que existe en todas las cosas, aunque en distintas proporciones. Este panpsiquismo materialista evita tanto el dualismo como el reduccionismo.</p>
+                <p><strong>Sobre la mujer y el conocimiento:</strong> Cavendish defendió de forma recurrente la capacidad intelectual de las mujeres. Atribuyó la falta de logros filosóficos femeninos no a una inferioridad natural, sino a la exclusión de la educación y las instituciones del saber. En <em>The Blazing World</em> imaginó un mundo gobernado por una emperatriz filósofa como contrapunto a la marginación real.</p>
+            </div>
+        </div>
+
+        <!-- ═══════ CONCEPTOS CLAVE ═══════ -->
+        <div class="section" id="conceptos">
+            <div class="section-header">
+                <div class="section-icon">🔑</div>
+                <h2 class="section-title">Conceptos clave</h2>
+            </div>
+
+            <div class="concepts-grid">
+                <div class="concept-card">
+                    <h4>🌿 Materialismo vitalista</h4>
+                    <p>Toda la realidad es material, pero la materia no es inerte: está dotada de vida, percepción y automoción. No hay necesidad de recurrir a un espíritu inmaterial para explicar el movimiento o la conciencia.</p>
+                </div>
+
+                <div class="concept-card">
+                    <h4>🧩 Tres grados de materia</h4>
+                    <p>La naturaleza se compone de materia <strong>racional</strong> (pensante y autodirectiva), materia <strong>sensitiva</strong> (perceptiva y responsable del movimiento) y materia <strong>inanimada</strong> (que es movida por las otras dos). Las tres están siempre mezcladas.</p>
+                </div>
+
+                <div class="concept-card">
+                    <h4>🔄 Automoción de la materia</h4>
+                    <p>Contra el mecanicismo, Cavendish sostiene que la materia se mueve a sí misma. No necesita un primer motor externo ni fuerzas sobrenaturales. La naturaleza es autosuficiente y autoorganizada.</p>
+                </div>
+
+                <div class="concept-card">
+                    <h4>🔬 Crítica a los instrumentos</h4>
+                    <p>Los microscopios y telescopios no revelan la verdad, sino que la distorsionan. La razón es un instrumento de conocimiento más fiable que cualquier artilugio óptico. La ciencia experimental promete más de lo que puede cumplir.</p>
+                </div>
+
+                <div class="concept-card">
+                    <h4>🪞 Panpsiquismo</h4>
+                    <p>Todo en la naturaleza tiene algún grado de percepción y conocimiento. No solo los animales: también las plantas, las piedras y los metales «conocen» a su manera, al poseer materia racional y sensitiva.</p>
+                </div>
+
+                <div class="concept-card">
+                    <h4>🌐 Infinidad de la naturaleza</h4>
+                    <p>La naturaleza es un todo continuo, infinito e indivisible. No hay vacío ni átomos separados. Todo está conectado en un plenum material que forma un cuerpo unitario y vivo.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════ OBRAS ═══════ -->
+        <div class="section" id="obras">
+            <div class="section-header">
+                <div class="section-icon">📚</div>
+                <h2 class="section-title">Obras principales</h2>
+            </div>
+
+            <div class="works-list">
+                <div class="work-item">
+                    <span class="work-year">1653</span>
+                    <div class="work-info">
+                        <h4>Poems and Fancies</h4>
+                        <p>Primera obra publicada. Contiene poemas que exponen su atomismo inicial, con una visión poética de la naturaleza donde los átomos danzan y se combinan para formar todas las cosas.</p>
+                    </div>
+                </div>
+
+                <div class="work-item">
+                    <span class="work-year">1655</span>
+                    <div class="work-info">
+                        <h4>Philosophical and Physical Opinions</h4>
+                        <p>Primer tratado filosófico sistemático. Abandona el atomismo a favor de una materia continua dotada de automoción. Desarrolla la distinción entre materia racional, sensitiva e inanimada.</p>
+                    </div>
+                </div>
+
+                <div class="work-item">
+                    <span class="work-year">1664</span>
+                    <div class="work-info">
+                        <h4>Philosophical Letters</h4>
+                        <p>Colección de cartas filosóficas donde critica directamente a Hobbes, Descartes, Van Helmont y otros filósofos de su tiempo. Es una de las primeras obras de crítica filosófica sistemática escrita por una mujer.</p>
+                    </div>
+                </div>
+
+                <div class="work-item">
+                    <span class="work-year">1666</span>
+                    <div class="work-info">
+                        <h4>Observations upon Experimental Philosophy</h4>
+                        <p>Su obra filosófica más importante. Crítica rigurosa de la ciencia experimental de Hooke y Boyle. Defiende que la razón supera a los instrumentos como vía de conocimiento de la naturaleza.</p>
+                    </div>
+                </div>
+
+                <div class="work-item">
+                    <span class="work-year">1666</span>
+                    <div class="work-info">
+                        <h4>The Blazing World</h4>
+                        <p>Narración utópica de ciencia ficción publicada como apéndice de las <em>Observations</em>. Una joven llega a un mundo paralelo donde gobierna como emperatriz-filósofa, creando una sociedad ideal. Considerada una de las primeras obras de ciencia ficción.</p>
+                    </div>
+                </div>
+
+                <div class="work-item">
+                    <span class="work-year">1668</span>
+                    <div class="work-info">
+                        <h4>Grounds of Natural Philosophy</h4>
+                        <p>Revisión y reformulación madura de su sistema filosófico. Simplifica y clarifica su teoría de los tres grados de materia y su visión de la naturaleza como un todo autosuficiente.</p>
+                    </div>
+                </div>
+
+                <div class="work-item">
+                    <span class="work-year">1667</span>
+                    <div class="work-info">
+                        <h4>The Life of William Cavendish</h4>
+                        <p>Biografía de su marido, considerada una de las primeras biografías seculares escritas por una mujer en inglés. Combina relato histórico, retrato personal y reflexión política.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════ CONTEXTO HISTÓRICO ═══════ -->
+        <div class="section" id="contexto">
+            <div class="section-header">
+                <div class="section-icon">🏰</div>
+                <h2 class="section-title">Contexto histórico y filosófico</h2>
+            </div>
+
+            <div class="context-box" style="margin-bottom: 16px;">
+                <h4>La Revolución Científica del siglo XVII</h4>
+                <p>Margaret Cavendish vive en el siglo de la <strong>Revolución Científica</strong>, el período en que la imagen aristotélica del cosmos es sustituida por una nueva visión matemática y mecanicista de la naturaleza. Es la época de Galileo, Descartes, Boyle, Hooke y Newton.</p>
+                <p>El <strong>mecanicismo</strong> —la idea de que la naturaleza funciona como una gran máquina regida por leyes matemáticas— se convierte en el paradigma dominante. La materia se concibe como extensión inerte movida por fuerzas externas, y la ciencia experimental se erige como el método privilegiado para conocer la naturaleza.</p>
+                <p>Cavendish participa en estos debates como una <strong>voz disidente</strong>: acepta la importancia de estudiar la naturaleza, pero rechaza tanto el mecanicismo como la primacía del experimento sobre la razón.</p>
+            </div>
+
+            <div class="context-box" style="margin-bottom: 16px;">
+                <h4>La Inglaterra del siglo XVII</h4>
+                <p>El siglo XVII inglés está marcado por una convulsión política sin precedentes: la <strong>Guerra Civil</strong> (1642-1651), la ejecución de Carlos I, la república de Cromwell y la <strong>Restauración</strong> monárquica de 1660. Los Cavendish, realistas convencidos, sufren el exilio durante casi dos décadas.</p>
+                <p>En este contexto, el acceso de las mujeres a la vida intelectual era extremadamente limitado. Las universidades, las sociedades científicas y la publicación estaban reservadas a los hombres. Que una mujer publicara obras de filosofía natural bajo su propio nombre era un acto de extraordinaria audacia que le valió tanto admiración como el apodo despectivo de <em>«Mad Madge»</em> (la loca Madge).</p>
+            </div>
+
+            <div class="context-box">
+                <h4>La Royal Society y la ciencia experimental</h4>
+                <p>La <strong>Royal Society of London</strong>, fundada en 1660, se convirtió en la institución emblema de la nueva ciencia experimental. Figuras como Robert Boyle y Robert Hooke practicaban una filosofía natural basada en la observación controlada, el uso de instrumentos y la comunicación pública de resultados.</p>
+                <p>La visita de Cavendish a la Royal Society en 1667 fue un acontecimiento social e intelectual. Aunque fue recibida con cortesía, su presencia generó incomodidad: una mujer que no solo observaba, sino que tenía un sistema filosófico propio y se atrevía a discrepar de los fundamentos de la ciencia experimental.</p>
+            </div>
+        </div>
+
+        <!-- ═══════ RECEPCIÓN Y LEGADO ═══════ -->
+        <div class="section" id="recepcion">
+            <div class="section-header">
+                <div class="section-icon">🌱</div>
+                <h2 class="section-title">Recepción y legado</h2>
+            </div>
+
+            <div class="prose">
+                <p>Durante los siglos XVIII y XIX, la obra de Margaret Cavendish cayó en un olvido casi total. Se la recordaba, si acaso, como una excéntrica aristocrática, y su filosofía no se tomaba en serio. El apodo <em>«Mad Madge»</em> que le pusieron sus contemporáneos la persiguió durante siglos.</p>
+                <p>El <strong>redescubrimiento</strong> de Cavendish se produce a partir de la segunda mitad del siglo XX, impulsado por la historia de la filosofía feminista y los estudios de la Revolución Científica. Investigadoras como <strong>Eileen O'Neill</strong>, <strong>Sarah Hutton</strong> y <strong>Lisa Walters</strong> han recuperado su pensamiento y demostrado su originalidad y rigor filosófico.</p>
+                <p>Hoy, Cavendish es reconocida como una <strong>figura fundamental</strong> de la filosofía del siglo XVII por varias razones: ofreció una alternativa coherente al dualismo cartesiano, anticipó debates contemporáneos sobre el panpsiquismo y la filosofía de la mente, fue una de las primeras voces en cuestionar la autoridad epistemológica de los instrumentos científicos, y planteó la cuestión de la exclusión de las mujeres del conocimiento como un problema filosófico, no meramente social.</p>
+                <p><em>The Blazing World</em> ha sido recuperada como una de las <strong>primeras obras de ciencia ficción</strong> de la literatura occidental, y su combinación de filosofía, imaginación literaria y crítica social la convierte en un texto fascinante para lectores contemporáneos.</p>
+            </div>
+        </div>
+
+        <!-- ═══════ RELACIÓN CON OTROS AUTORES ═══════ -->
+        <div class="section" id="relaciones">
+            <div class="section-header">
+                <div class="section-icon">🔗</div>
+                <h2 class="section-title">Relación con otros autores</h2>
+            </div>
+
+            <div class="concepts-grid">
+                <div class="concept-card">
+                    <h4>⚔️ Frente a Descartes</h4>
+                    <p>Rechaza el <strong>dualismo mente-cuerpo</strong> y la concepción de la materia como extensión pasiva. Si la materia fuera inerte, argumenta, no podría explicarse el movimiento sin recurrir a lo sobrenatural. También critica su método de la duda como excesivamente escéptico.</p>
+                </div>
+
+                <div class="concept-card">
+                    <h4>⚔️ Frente a Hobbes</h4>
+                    <p>Comparte con Hobbes el <strong>materialismo</strong> —todo es materia—, pero discrepa en un punto crucial: para Hobbes la materia es inerte y el movimiento se transmite por contacto; para Cavendish, la materia se mueve a sí misma y posee percepción interna.</p>
+                </div>
+
+                <div class="concept-card">
+                    <h4>⚔️ Frente a Hooke y Boyle</h4>
+                    <p>Critica la <strong>ciencia experimental</strong> de la Royal Society. Los instrumentos ópticos no descubren la realidad, sino que producen artefactos visuales. La razón filosófica es más fiable que el microscopio para comprender la naturaleza.</p>
+                </div>
+
+                <div class="concept-card">
+                    <h4>🤝 Junto a Anne Conway</h4>
+                    <p>Contemporánea de Conway, que también desarrolló un <strong>vitalismo filosófico</strong> (en <em>Principles of the Most Ancient and Modern Philosophy</em>). Ambas rechazan el mecanicismo y defienden una materia viva, aunque Conway incluye un componente espiritual que Cavendish rechaza.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════ GLOSARIO ═══════ -->
+        <div class="section" id="glosario">
+            <div class="section-header">
+                <div class="section-icon">📋</div>
+                <h2 class="section-title">Glosario de términos</h2>
+            </div>
+
+            <div class="glossary">
+                <dl class="glossary-term">
+                    <dt>Materia racional</dt>
+                    <dd>El grado más sutil de materia, responsable del pensamiento, la razón y la autodirección. Presente en todas las cosas naturales, aunque en distinta proporción.</dd>
+                </dl>
+
+                <dl class="glossary-term">
+                    <dt>Materia sensitiva</dt>
+                    <dd>Grado intermedio de materia, responsable de la percepción, el movimiento y las respuestas al entorno. Opera como agente ejecutor de los patrones que establece la materia racional.</dd>
+                </dl>
+
+                <dl class="glossary-term">
+                    <dt>Materia inanimada</dt>
+                    <dd>El grado más denso y pesado de materia, que carece de movimiento propio pero es organizada y movida por las materias racional y sensitiva con las que siempre está mezclada.</dd>
+                </dl>
+
+                <dl class="glossary-term">
+                    <dt>Automoción</dt>
+                    <dd>Principio según el cual la materia posee en sí misma la capacidad de moverse, sin necesidad de un motor externo. Es la alternativa de Cavendish al mecanicismo, que requiere un impulso inicial externo.</dd>
+                </dl>
+
+                <dl class="glossary-term">
+                    <dt>Filosofía natural</dt>
+                    <dd>Término utilizado en los siglos XVI-XVIII para referirse al estudio sistemático de la naturaleza, sus principios y sus causas. Equivalente aproximado de lo que hoy llamamos «ciencia» y «filosofía de la ciencia».</dd>
+                </dl>
+
+                <dl class="glossary-term">
+                    <dt>Plenum</dt>
+                    <dd>Concepción de la naturaleza como un todo continuo y lleno, sin vacío ni átomos separados. Frente al atomismo, Cavendish defiende que la materia forma un cuerpo unitario donde todo está conectado.</dd>
+                </dl>
+
+                <dl class="glossary-term">
+                    <dt>Panpsiquismo</dt>
+                    <dd>Doctrina según la cual todo lo que existe posee algún grado de percepción, conocimiento o experiencia interna. En Cavendish, esto se deriva de que toda materia contiene materia racional y sensitiva.</dd>
+                </dl>
+
+                <dl class="glossary-term">
+                    <dt>Mecanicismo</dt>
+                    <dd>Corriente filosófica del siglo XVII (Descartes, Boyle, Hobbes) que concibe la naturaleza como una máquina: materia inerte en movimiento regida por leyes mecánicas. Cavendish lo rechaza por considerar que no puede explicar la vida ni la percepción.</dd>
+                </dl>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Materiales elaborados por Francisco Jiménez · Dpto. de Filosofía · <a href="https://pacofilo.github.io/filoalquipir/" target="_blank">IES Alquipir, Cehegín</a></p>
+    </footer>
+
+</body>
+</html>
